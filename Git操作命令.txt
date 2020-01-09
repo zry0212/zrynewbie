@@ -1,0 +1,18 @@
+场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- file。
+
+场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时（已经add了），想丢弃修改，分两步，第一步用命令git reset HEAD <file>，就回到了场景1，第二步按场景1操作。
+
+场景3：已经提交了不合适的修改到版本库时（已经commit了），想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库：
+
+
+
+现在，我们要把当前版本append GPL回退到上一个版本add distributed，就可以使用git reset命令：
+
+$ git reset --hard HEAD^
+HEAD is now at e475afc add distributed
+最新的那个版本append GPL已经看不到了！如果又想回到未来的版本
+
+办法其实还是有的，只要上面的命令行窗口还没有被关掉，你就可以顺着往上找啊找啊，找到那个append GPL的commit id是1094adb...，于是就可以指定回到未来的某个版本：
+
+$ git reset --hard 1094a
+HEAD is now at 83b0afe append GPL
